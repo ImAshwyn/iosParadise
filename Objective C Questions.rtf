@@ -6,15 +6,77 @@
 \paperw11900\paperh16840\margl1440\margr1440\vieww21000\viewh13580\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\f0\fs28 \cf0 What is Objective C ? How is it different from C / C++\
+\f0\fs28 \cf0 -  What is Objective C ? \
 \
-What are protocols ?\
-What are categories ?\
+An Object oriented programming language mainly used by Apple for OS X and iOS operating system and their respective APIs cocoa and cocoa touch.\
+It is built on top of C, by adding features of Small Talk programming language making it object oriented.\
+Initially it was developed by NeXT for its NextStep OS , later it was taken over by Apple.\
+\
+\
+- How is Objective C different from C++ ?\
+\
+Objective C doesn\'92t support multiple inheritance, C++ does.\
+Objective C will allow you to send messages to nil , whereas C++ will crash if you try to do the same.\
+Objective C lacks the namespace feature of C++.\
+Objective C is focussed on run time decisions and heavily dependent on its run time libraries to handle inheritance and polymorphism , whereas\
+C++  the focus lies on static compile time decisions.\
+\pard\pardeftab720\sl420
+\cf0 Objective C has categories which allows you to add functionality to existing classes. C++ doesn\'92t have this.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+\
+- What is foundation framework ?\
+\
+Defines a base layer of Objective C classes.\
+Includes the root object class, classes representing basic data types, collection classes for storing other objects and classes representing system information like dates.\
+Makes software development easier by introducing consistent conventions for things such as deallocation.\
+\
+\
+- What are protocols ?\
+\
+A protocol is a group of related properties and methods that can be implemented by any class.\
+A class will have to adopt the protocol to implement the methods in it.\
+\
+\
+- What are categories ?\
+\
+A group of related methods for a class and all the methods are available as if they are declared in the main interface file.\
+Help in providing modularity in projects.\
+You can add methods to a class for which u don\'92t have the source code.\
+You can also override existing methods in already existing class.\
+\
+\
+- What are extensions ?\
+\
+Extensions are categories without the category name. Also called anonymous categories.\
+Special type of category that require methods to be defined in the implementation file of associated class rather than the implementation defined in the category.\
+Can be only added to the class for which you have the source code.\
+Can be used to override publicly declared properties. , i.e you can make a readonly property declared in a .h file readwrite within the class.\
+Any method or variable declared is not even accessible to the inherited class.\
+\
+\
+- What are the differences between categories & extensions ?\
+\
+Source Code : Not Required in Categories . Required in extensions\
+Categories are inherited by the child class. Extensions are not inherited.\
+Properties cannot be added to categories but can be added to extensions.\
+Method definitions are written in the category .m file itself. Whereas in extensions definitions are written by the respective class implementation file.\
+Categories are public. Extensions are private.\
+\
 What are formal & informal protocols?\
-What are extensions ?\
+\
+Informal protocols are categories that implicitly makes all objects adopters of the protocol.\
+Implementation of the methods is optional.\
+Formal protocols are a set of methods that the client classes are expected to implement.\
+\
+\
 What are delegates ?\
 What is a retain cycle ?\
+What is NSCoding ? \
+What is NSCopying ?\
 What are notifications ?\
+What is JSONSerialization ?\
+What is NSXMLParser ?\
 What is strong , retain , weak and copy ?\
 What is the difference between atomic and non atomic properties ?\
 When does an object get deallocated ?\
@@ -51,7 +113,8 @@ What is a responder chain and first responder ?\
 What is a singleton class ? How is it different from using a global variable ?\
 Difference between synchronous & asynchronous calls ?\
 Difference between serial and concurrent queues ?\
-\expnd0\expndtw0\kerning0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \expnd0\expndtw0\kerning0
 What is performSelector:withObject:? What if I have to performSelector:withObject: but pass 3-4 arguments to the method? (Hint: NSInvocationOperation\
 Who calls dealloc method? Can we implement dealloc in ARC? If yes, what is the need to do that?\
 How does dispatch_once manages to run only once ?\
@@ -64,4 +127,5 @@ What is NSNullable ?\
 - What are the different types of dispatch queues ?\
 - Is main queue a serial or a concurrent queue ? \
 - Explain a situation where you would use NSMutableCopy ?\
-- What is the difference between using -(id) and -(instanceType) ?}
+- What is the difference between using -(id) and -(instanceType) ?\
+- What is an attributed string ?}
