@@ -1,92 +1,82 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww31780\viewh8860\viewkind0
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid2\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid102\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid202\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid302\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww27420\viewh14080\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\f0\b\fs26 \cf0 I.Application level\
+II.Object level\
+III.View level\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-
-\f0\b\fs26 \cf0 -What does the main.m do in iOS ?\
-
-\b0 \
-*This file contains the function main() which is the entry point for execution of any C program. Since objective C is the superset of C the same same hold for objective C as well.\
+\cf0 ___________________________\
 \
+APPLICATION LEVEL\
+
+\b0 ___________________________
+\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+\cf0 -What does the main.m do in iOS ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b0 \cf0 *This file contains the function main() which is the entry point for execution of any C program. Since objective C is the superset of C the same same holds good for objective C as well.\
 \ul What does main() do?\
-\ulnone *The functions parameters argv and arc contain info about the command line parameters passed to the executable on launch.\
-*It consists of on auto-release pool to free up memory form the objects.\
-*It calls UIApplicationMain() which creates an application object.\
-*It returns value returned by UIApplicationMain() to the caller (The shell that launched the executable) \
-_____________________________________\
+\ulnone *The functions parameters 
+\i argv
+\i0  and 
+\i argc
+\i0  contain info about the command line parameters passed to the executable on launch.\
+*It consists of on \ul auto-release poo\ulnone l to free up memory from the objects.\
+*It calls \ul UIApplicationMain()\ulnone  which creates an application object.\
+*It \ul returns\ulnone  value returned by UIApplicationMain() to the caller (The shell that launched the executable) \
 \
-
-\b - Why Auto-released pool is required in ARC when ARC manages the memory for us?\
-
-\b0 *ARC just inserts the retain-release for the objects, thereby removing the retain count (making retain count = 0) but it does not free the memory immediately like in C.\
-*ARC is not garbage collection.\
-*Hence we need to insert autorelease pool object(iOS <=4.0) or autorelease pool blocks (Ios>=5.0) to free up the memory of those objects whose retain count is 0.\
-_____________________________________\
-\
-
-\b - Should auto-release pool be used elsewhere in the code other than main?\
-
-\b0 *Yes, sometimes when we create a lot of objects and most of them being one-time usage, we want to free up memory used after its usage without further delay.\
-\
-
-\i //Non Arc Env\
-@autoreleasepool \
-\{\
-    MyObject *obj = [[MyObject alloc] init]; // no autorelease call here\
-
-\i0     //Since MyObject is never released its a leak even when the pool exits\
-
-\i \}\
-\
-//Non Arc Env\
-@autoreleasepool \
-\{\
-    MyObject *obj = [[[MyObject alloc] init] autorelease]; \
-
-\i0     //Memory is freed once the block ends\
-
-\i \}\
-\
-// Arc Env\
-@autoreleasepool \
-\{\
-    MyObject *obj = [[MyObject alloc] init]; \
-
-\i0     //No need to do anything once the obj variable is out of scope there are no strong pointers so the memory will free\
-
-\i \}\
-\
-// Arc Env\
-MyObject *obj
-\i0  //strong pointer from elsewhere in scope  
-\i \
-@autoreleasepool \
-\{\
-   obj = [[MyObject alloc] init]; \
-
-\i0     //Not freed still has a strong pointer \
-
-\i \}\
-
-\i0 _____________________________________\
-\
-
-\b - What is  the role of UIApplicationMain ?\
-
-\b0 \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
-\cf0 *This function instantiates the application object from the principal class (UIApplication) and instantiates the delegate from the given class and sets the delegate for the application.\
-*It also sets up the main event loop, including the applications run loop and begins processing events.\
-*If applications Info.plist specifies a main nib file to be loaded, by including NSMainNibFile key and a valid file name for the value, the function loads that nib file.\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 *Despite the declared return type, this function never returns.\
-_____________________________________\
+\cf0 _____________________________________\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b \cf0 - What is  the role of UIApplicationMain ?
+\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl360\slmult1\pardirnatural
+\cf0 *This function instantiates the \ul application object\ulnone  from the principal class (UIApplication) and instantiates the delegate from the given class and sets the delegate for the application.\
+*It also sets up the \ul main event loop\ulnone , including the applications run loop and begins processing events.\
+*If applications Info.plist specifies a main nib file to be loaded, by including NSMainNibFile key and a valid file name for the value, the function\ul  loads that nib file\ulnone .\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+\cf0 *Despite the declared return type, this function \ul never returns\ulnone .\
 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 _____________________________________\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
 
-\b - Brief details on the parameters specified for  UIApplicationMain function?\
+\b \cf0 - Brief details on the parameters specified for  UIApplicationMain function?\
+Non-ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 *This function creates the main application object. \
+\i\b0 \cf0 int main(int argc, char *argv[])\
+\{\
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];\
+    int retVal = UIApplicationMain(argc, argv, nil, nil);\
+    [pool release];\
+    return retVal;\
+\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\i0\b \cf0 ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i\b0 \cf0 int main(int argc, char *argv[])\
+\{\
+   @autorelaesepool  \{\
+     return UIApplicationMain(argc, argv, nil, nil);\
+   \}\
+\}
+\i0\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b0 \cf0 *This function creates the main application object. \
 *If the third parameter is specifies nil(default), it will create an instance of 
 \i UIApplication
 \i0 , else you can subclass 
@@ -100,36 +90,37 @@ _____________________________________\
 *Before the app object processes the first event, it finally sends application:didFinishLaunchingWithOptions: a message to its delegate, giving us a chance to do our own setup. The least we have to do here is to put our main window on the screen by sending it a 
 \i makeKeyAndVisible
 \i0  message\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
 _____________________________________\
-\
-
-\b -What is run loop?\
-
-\b0 The run loop is basically an infinite loop that causes 
-\i UIApplicationMain()
-\i0  to never return. IT is responsible to process touch and network events.\
-_____________________________________\
-\
 
 \b - What is UIApplication ?\
 
 \b0 \
-\ul What is it?\
-\ulnone *UIApplication class provides a centralised point of control and coordination for apps running in iOS.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 What is it?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone *UIApplication class provides a centralised point of control and coordination for apps running in iOS.\
 *Every app has exactly one instance of UIApplication object.\
 \
-\ul When is it created?\
-\ulnone *When an app is launched, the system calls the UIApplicationMain function, which creates a singleton UIApplication object.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 When is it created?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone *When an app is launched, the system calls the UIApplicationMain function, which creates a singleton UIApplication object.\
 \
-\ul What does it do?\
-\ulnone *The major role of the application object is to handle the initial routing of the incoming user events.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 What does it do?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone *The major role of the application object is to handle the initial routing of the incoming user events.\
 *It dispatches action messages forwarded to it by control objects(instances of UIControl class) to different target objects.\
 *It maintains a list of open windows(UIWindow objects) and through those can retrieve any of the apps UIView objects.\
 *UIApplication class defines a delegate that conforms to UIApplicationDelegate protocol and must implement some of the protocol methods.\
   The app objects informs the delegate of  significant runtime events like app launch, low memory warnings, app termination etc to respond appropriately.\
 \
-\ul What else it can do?\
-\ulnone App object can do the following(device specific behaviour)\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 What else it can do?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone App object can do the following(device specific behaviour)\
 *Temporarily suspend incoming touch events (beginIgnoringInteractionEvents)\
 *Register for remote notifications (registerForRemoteNotifications)\
 *Determine whether there is an installed app registered to handle a URL Scheme (canOpenURL:)\
@@ -144,14 +135,311 @@ _____________________________________\
 
 \b \
 - What are the different app states ?\
+
+\b0 _____________________________________\
+
+\b \
 - Explain app life cycle ?\
-- Explain view controller life cycle ?\
-- Explain UIKit class hierarchy?\
+
+\fs144 ___________________________\
+
+\fs26 \
+OBJECT LEVEL\
+
+\b0 ___________________________\
+
+\b -What is automatic reference counting(ARC)?\
+
+\b0 *ARC is a compiler level feature that simplifies the process of managing the lifetimes of objective-c objects\
+*Instead of we having to remember when to retain or release an object, ARC evaluates the lifetime requirements of our objects and automatically inserts the appropriate method calls at compile time.\
+\
+_____________________________________
+\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+\cf0 -What is autorelease?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 \
+_____________________________________\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b \cf0 - Why Auto-released pool is required in main even while using ARC, when ARC manages the memory for us?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b0 \cf0 *ARC just inserts the retain-release for the objects, thereby removing the retain count (making retain count = 0) but it does not free the memory immediately like in C.\
+*ARC is not garbage collection.\
+*Hence we need to insert autorelease pool object(iOS <=4.0) or autorelease pool blocks (Ios>=5.0) to free up the memory of those objects whose retain count is 0.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 _____________________________________\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b \cf0 - Should auto-release pool be used elsewhere in the code other than main?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b0 \cf0 *Yes, sometimes when we create a lot of objects and most of them being one-time usage, we want to free up memory used after its usage without further delay.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b \cf0 Non-ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i\b0 \cf0 @autoreleasepool \
+\{\
+    MyObject *obj = [[MyObject alloc] init]; // no autorelease call here\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i0 \cf0     //Since MyObject is never released its a leak even when the pool exits\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i \cf0 \}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\i0\b \cf0 Non-ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i\b0 \cf0 @autoreleasepool \
+\{\
+    MyObject *obj = [[[MyObject alloc] init] autorelease]; \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i0 \cf0     //Memory is freed once the block ends\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i \cf0 \}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\i0\b \cf0 ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i\b0 \cf0 @autoreleasepool \
+\{\
+    MyObject *obj = [[MyObject alloc] init]; \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i0 \cf0     //No need to do anything once the obj variable is out of scope there are no strong pointers so the memory will free\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i \cf0 \}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\i0\b \cf0 ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i\b0 \cf0 MyObject *obj
+\i0  //strong pointer from elsewhere in scope  
+\i \
+@autoreleasepool \
+\{\
+   obj = [[MyObject alloc] init]; \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i0 \cf0     //Not freed still has a strong pointer \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i \cf0 \}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\i0 \cf0 _____________________________________\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b \cf0 -What is run loop?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b0 \cf0 The run loop is basically an infinite loop that causes 
+\i UIApplicationMain()
+\i0  to never return. It is responsible to process touch and network events.
+\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\fs72 \cf0 ___________________________
+\fs144 \
+
+\fs26 \
+VIEW LEVEL\
+\
+ Explain UIKit class hierarchy?\
+                             \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 \ul \ulc0 NSObject\ulnone  \
+\ul -UIResponder\
+\ulnone    -UIApplication\
+\ul    -UIViewController\
+\ulnone       -UITabViewController\
+      -UITableViewController\
+\ul       -UINavigationController\
+\ulnone          -UIImagePickerController\
+         -UIVideoEditorController\
+    \ul -UIView\ulnone \
+        -UIWindow, UILabel, UIPickerView, UIProgressView, UIActivityIndicatorView, UIImageView\
+        -UITableViewCell, UIActionSheet, UIAlertView, UIWebView\
+        -UITabBar, UIToolBar, UINavigationBar, UISearchBar\
+\ul         -UIScrollView\
+\ulnone           -UITableView,UICollectionView, UITextView\
+\ul         -UIControl\
+\ulnone            -UIButton, UIDatePicker, UITextField, UISwitch, UISegmentedControl, UIPageControl\
+-UIColor\
+-UIImage\
+-UIFont\
+\
+-UIAcceleration\
+-UIAccelerometer\
+-UIAccessibilityElement\
+\
+-UITouch\
+-UIEvent\
+\
+-UIDevice\
+-UIScreen\
+\
+-UIMenuController\
+-UISearchDisplayController\
+\
+-UINavigationItem\
+\ul -UIBarItem\
+\ulnone     -UITabBarItem\
+    -UIBarButtonItem\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b \cf0 \
+___________________________\
+- What is a role of UIWindow in an iOS app?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 \ul What is UIWindow?\
+\ulnone *UIWindow is a class whose objects manage and coordinate with the views which the app displays on the display screen.\
+*There should be atleast one window object in an app to show the content.\
+\
+\ul What are the 2 principal functions of UIWindow?\ulnone \
+1)To provide area for displaying its views\
+2)To distribute events to the views\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 \
+Where does UIWindow object get instantiated when using storyboard?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone *When using storyboard, the app is given the main storyboard pointed to by the info.plist key \'91Main Storyboard file base name\'92\
+*After UIApplicationMain() instantiates the app delegate class, it asks for its value for 
+\i window 
+\i0 property. If that is nil, a new window is created and assigned to the app delegate\'92s 
+\i window
+\i0  property.\
+*The storyboard\'92s initial view controller is then instantiated and assigned to the window\'92s 
+\i rootViewController
+\i0  property, with the result is view is placed on the window as its root view.\
+*The window is then sent 
+\i makeKeyAndVisible
+\i0  message.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulc0 Can there be multiple UIWindows  in an app?\ulc0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone Yes. In cases where we want to display a view or a view controller over every other element in the iOS app\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 \
+Why UIWindow instance passed makeKeyAndVisible message?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone \
+Making window Key: means the window will be receiving the keyboard and non-touch-events. But the window may be partially displayed or completely hidden\
+Making window visible: means the window will be brought to front and completely visible.\ul \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b \cf0 \ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 ___________________________\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 -What is UIViewController? Explain view controller life cycle ?\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls1\ilvl1\cf0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0
+\b0 \cf0 {\listtext	\'95	}ViewDidLoad - \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf0 {\listtext	\uc0\u8259 	}Called:Called when you create the class and load from xib/storyboard. \
+{\listtext	\uc0\u8259 	}What can be done:Great for initial setup and one-time-only work.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf0 {\listtext	\'95	}ViewWillAppear - \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf0 {\listtext	\uc0\u8259 	}Called:Called right before your view appears.Because you might be going back and forth between views, this will be called every time your view is about to appear on the screen.\
+{\listtext	\uc0\u8259 	}What can be done:Good for hiding/showing fields or any operations that you want to happen every time before the view is visible.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf0 {\listtext	\'95	}ViewDidAppear - \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf0 {\listtext	\uc0\u8259 	}Called:Called after the view appears \
+{\listtext	\uc0\u8259 	}What can be done:Great place to start an animations or the loading of external data from an API.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf0 {\listtext	\'95	}ViewWill/DidDisappear - \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf0 {\listtext	\uc0\u8259 	}Called:Called right before your view disappears. Because you might be going back and forth between views, this will be called every time your view is about to disappear on the screen.\
+{\listtext	\uc0\u8259 	}What can be done:Good for de-initialising properties or stoping any tasks \
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls3\ilvl0\cf0 {\listtext	\'95	}ViewDidDisappear - \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls3\ilvl1\cf0 {\listtext	\uc0\u8259 	}Called:Called after the view disappears \
+{\listtext	\uc0\u8259 	}What can be done:Good for de-initialising properties or stoping any tasks	\
+   \'95	ViewDidUnload/ViewDidDispose - \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls4\ilvl1\cf0 {\listtext	\uc0\u8259 	}In Objective C, this is where you do your clean-up and release of stuff, but this is handled automatically so not much you really need to do here.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b \cf0 \
+___________________________\
+- What is navigation controller?\
+\
+___________________________\
+- What is a modal view? Distinguish pushing over presentation\
+\
+___________________________\
+- What is the use of addChildViewController ?\
+\
+___________________________\
 - What is a file owner ?\
-- What is a responder chain ?\
-- What are first responders ?\
+\
+\
+___________________________\
+- What is  first responder and a responder chain ?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 \ul \ulc0 What is a responder?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone *A responder is an object that can respond to events and handle them.\
+*All responder objects are instances of classes that ultimately inherit from UIResponder class\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 What is first responder?\ulnone \
+- In an app, the responder object that first receives many kinds of events is known as the first responder.\
+-The events can be key events, motion events or action messages. (Mouse events and multitouch events first go to the view that is under the finger, that view might or might not be the first responder).\
+-The first responder in a window is a view that the app deems to be best suited for handling an event.\
+-To receive an event, the responder should show willingness to become first responder by using the following method\
+  
+\i -(BOOL) canBecomeFirstResponder \{ return YES; \}
+\i0 \
+\ul \
+What is a responder chain?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone *Responder chain is a runtime collection (hierarchy) of objects that can respond to an event.\
+*If the first responder cannot receive the event, it will forward it to the next responder in the responder chain. The message travels up the chain, towards the higher-level objects, until it is handled. If it isn\'92t handled, the app discards it.
+\b \
+___________________________\
+- What is the direct superclass of UIButton ?\
+ \
+
+\b0    UIButton <-UIcontrol <- UIView <- UIResponder <- NSObject \
+
+\b \
+___________________________\
+- What is UIControl ?\
+\
+___________________________\
+\
+- How do you call a UIButtonAction programmatically ?\
+\
+___________________________\
 - What\'92s new in iOS 8 and iOS 9 ?\
-- What is a UIWindow ?\
 - Explain push notification flow / cycle ?\
 - Difference between a view and a layer ?\
 - What is APNS ? What is the maximum payload size ?\
@@ -170,14 +458,10 @@ _____________________________________\
 - What is content hugging and content resistance/compression ?\
 - What is Core Data ? Explain Core data stack ?\
 - What is new in Core Location ?\
-- How do you call a UIButtonAction programmatically ?\
-- What is UIControl ?\
 - What is a UIBezierPath ?\
 - What is IBDesignables & IBInspectable ?\
 - Steps in submitting an app to a app store ?\
-- What is the direct superclass of UIButton ?\
 - Tell me something about stack views introduced in iOS 9 ?\
 - What is viewDidLayoutSubviews ?\
 - What is the difference between content inset and content offset ?\
-- What is the use of reuse identifier in table views ?\
-- What is the use of addChildViewController ?}
+- What is the use of reuse identifier in table views ?}
