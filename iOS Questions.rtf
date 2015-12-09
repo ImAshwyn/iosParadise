@@ -1,12 +1,12 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 ArialMT;}
 {\colortbl;\red255\green255\blue255;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid2\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid102\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}
 {\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid202\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid3}
 {\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid302\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid4}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
-\paperw11900\paperh16840\margl1440\margr1440\vieww27420\viewh14080\viewkind0
+\paperw11900\paperh16840\margl1440\margr1440\vieww38200\viewh18580\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
 
 \f0\b\fs26 \cf0 I.Application level\
@@ -46,6 +46,8 @@ APPLICATION LEVEL\
 *If applications Info.plist specifies a main nib file to be loaded, by including NSMainNibFile key and a valid file name for the value, the function\ul  loads that nib file\ulnone .\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
 \cf0 *Despite the declared return type, this function \ul never returns\ulnone .\
+\
+Wrap-up:All in all the job of main is to hand control off to UIKIt framework. The UIApplicationMain function handles this process by creating core objects of your app (app object), loading your app\'92s user-interface from the available storyboard files, calling your custom code( to do some initial setup)\
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 \cf0 _____________________________________\
@@ -104,12 +106,12 @@ _____________________________________\
 *Every app has exactly one instance of UIApplication object.\
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 \ul \ulc0 When is it created?\
+\cf0 \ul When is it created?\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 \cf0 \ulnone *When an app is launched, the system calls the UIApplicationMain function, which creates a singleton UIApplication object.\
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 \ul \ulc0 What does it do?\
+\cf0 \ul What does it do?\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 \cf0 \ulnone *The major role of the application object is to handle the initial routing of the incoming user events.\
 *It dispatches action messages forwarded to it by control objects(instances of UIControl class) to different target objects.\
@@ -118,7 +120,7 @@ _____________________________________\
   The app objects informs the delegate of  significant runtime events like app launch, low memory warnings, app termination etc to respond appropriately.\
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 \ul \ulc0 What else it can do?\
+\cf0 \ul What else it can do?\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 \cf0 \ulnone App object can do the following(device specific behaviour)\
 *Temporarily suspend incoming touch events (beginIgnoringInteractionEvents)\
@@ -127,30 +129,81 @@ _____________________________________\
 *Schedule and cancel notifications(scheduleLocalNotification:, cancelLocalNotification:)\
 _____________________________________\
 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b - What is app delegate ?\
+\b \cf0 - What is UIApplicationDelegate ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 \
-_____________________________________\
+\b0 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul What is UIApplicationDelegate protocol?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone *UIApplicationDelegate is a protocol which defines method that are called by singleton UIApplication object in response to important events in the lifetime of the app.\
+*It works alongside the app object to ensure the app interacts properly with the system and other apps.\
+*The methods of this protocol gives the app a chance to respond to the important changes.(like state transitions - foreground to background, background to forground, respond to incoming notifications)\
+*The methods of app delegate are the only way to receive notifications.\
+\
+*Like UIApplicationDelegate object, the root object of the app, the app delegate is a singleton object and is always present in runtime.\
+*Although UIApplication object does most of the underlying work to manage your app, the overall behaviour of the app is decided by providing appropriate implementations of app delegate methods.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul What are the crucial roles performed by app delegate?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone *It contains the app startup code.\
+*It responds to the key changes in the states\
+*It responds to notifications originating from outside the app such as remote-notifications, low-memory warnings, download completion notifications etc.\
+*Apps central objects and any other content that doesn\'92t have any owning view controller can be stored in the app delegate.\
+*It responds to events that target the app itself  and not specific to any view or view controller\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul What is app delegate class?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone *It is a subclass of UIResponder class and conforms to UIApplicationDelegate protocol.\
+*It receives all the callbacks of the events(mentioned above) and provides a chance for the app to handle it accordingly.
+\b \ul \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b \
-- What are the different app states ?\
+\b0 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 _____________________________________\
+\b \cf0 - What are the different app states ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b \
+\b0\fs24 \cf0 Not running:\ulnone  \expnd0\expndtw0\kerning0
+The app has not been launched or was running but was terminated by the system.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul Inactive:\ulnone The app is running in the foreground but is currently not receiving events. (It may be executing other code though. for example, when a call or SMS message is received.)\
+\ul Active:\ulnone The app is running in the foreground and is receiving events. This is the normal mode for foreground apps.\
+\ul Background:\ulnone The app is running in the background, and executing code.Most apps enter this state briefly on their way to being suspended \
+\ul Suspended:\ulnone  The app is in the background, but no code is being executed.  The system moves apps to this state automatically and does not notify them before doing so. \
+While suspended, an app remains in memory but does not execute any code.\
+\pard\pardeftab720
+\cf0 \expnd0\expndtw0\kerning0
+When a low-memory condition occurs, the system may purge suspended apps without notice to make more space for the foreground app.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b\fs26 \cf0 \kerning1\expnd0\expndtw0 \
 - Explain app life cycle ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs144 ___________________________\
+\fs144 \cf0 ___________________________\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs26 \
+\fs26 \cf0 \
 OBJECT LEVEL\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 ___________________________\
+\b0 \cf0 ___________________________\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b -What is automatic reference counting(ARC)?\
+\b \cf0 -What is automatic reference counting(ARC)?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 *ARC is a compiler level feature that simplifies the process of managing the lifetimes of objective-c objects\
+\b0 \cf0 *ARC is a compiler level feature that simplifies the process of managing the lifetimes of objective-c objects\
 *Instead of we having to remember when to retain or release an object, ARC evaluates the lifetime requirements of our objects and automatically inserts the appropriate method calls at compile time.\
 \
 _____________________________________
@@ -249,37 +302,65 @@ _____________________________________\
 
 \b0 \cf0 The run loop is basically an infinite loop that causes 
 \i UIApplicationMain()
-\i0  to never return. It is responsible to process touch and network events.
-\b \
+\i0  to never return. It is responsible to process touch and network events.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b \cf0 -What are instance variables and class variables?\
+\
+-What are properties and ivars?\
+-Why is @synthesized used?\
+-Distinguish between atomic and non-atomic in properties?\
+-What are retain counts?\
+-Explain assign, retain and release\
+-Explain strong, weak and unowned\
+\
+-Where do we use \'91copy\'92 and \'91mutable copy\'92\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl360\slmult1\pardirnatural
+
+\b0 \cf0 \ul When does copy behave like retain?
+\b \ulnone  \
+\
+What are convenience methods?
+\fs72 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 ___________________________
+\fs144 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\fs72 \cf0 ___________________________
-\fs144 \
-
-\fs26 \
+\fs26 \cf0 \
 VIEW LEVEL\
 \
  Explain UIKit class hierarchy?\
                              \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 \cf0 \ul \ulc0 NSObject\ulnone  \
+\b0 \cf0 \ul NSObject\ulnone  \
 \ul -UIResponder\
-\ulnone    -UIApplication\
-\ul    -UIViewController\
-\ulnone       -UITabViewController\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone    -UIApplication\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul    -UIViewController\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone       -UITabViewController\
       -UITableViewController\
-\ul       -UINavigationController\
-\ulnone          -UIImagePickerController\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul       -UINavigationController\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone          -UIImagePickerController\
          -UIVideoEditorController\
     \ul -UIView\ulnone \
         -UIWindow, UILabel, UIPickerView, UIProgressView, UIActivityIndicatorView, UIImageView\
         -UITableViewCell, UIActionSheet, UIAlertView, UIWebView\
         -UITabBar, UIToolBar, UINavigationBar, UISearchBar\
-\ul         -UIScrollView\
-\ulnone           -UITableView,UICollectionView, UITextView\
-\ul         -UIControl\
-\ulnone            -UIButton, UIDatePicker, UITextField, UISwitch, UISegmentedControl, UIPageControl\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul         -UIScrollView\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone           -UITableView,UICollectionView, UITextView\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul         -UIControl\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone            -UIButton, UIDatePicker, UITextField, UISwitch, UISegmentedControl, UIPageControl\
 -UIColor\
 -UIImage\
 -UIFont\
@@ -298,8 +379,10 @@ VIEW LEVEL\
 -UISearchDisplayController\
 \
 -UINavigationItem\
-\ul -UIBarItem\
-\ulnone     -UITabBarItem\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul -UIBarItem\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone     -UITabBarItem\
     -UIBarButtonItem\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
@@ -310,14 +393,15 @@ ___________________________\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
 \b0 \cf0 \ul What is UIWindow?\
-\ulnone *UIWindow is a class whose objects manage and coordinate with the views which the app displays on the display screen.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ulnone *UIWindow is a class whose objects manage and coordinate with the views which the app displays on the display screen.\
 *There should be atleast one window object in an app to show the content.\
 \
-\ul What are the 2 principal functions of UIWindow?\ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul What are the 2 principal functions of UIWindow?\ulnone \
 1)To provide area for displaying its views\
 2)To distribute events to the views\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 \ul \ulc0 \
+\ul \
 Where does UIWindow object get instantiated when using storyboard?\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 \cf0 \ulnone *When using storyboard, the app is given the main storyboard pointed to by the info.plist key \'91Main Storyboard file base name\'92\
@@ -333,13 +417,12 @@ Where does UIWindow object get instantiated when using storyboard?\
 \i makeKeyAndVisible
 \i0  message.\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 \ul \ulc0 \
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 \ulc0 Can there be multiple UIWindows  in an app?\ulc0 \
+\cf0 \ul \
+Can there be multiple UIWindows  in an app?\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 \cf0 \ulnone Yes. In cases where we want to display a view or a view controller over every other element in the iOS app\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 \ul \ulc0 \
+\cf0 \ul \
 Why UIWindow instance passed makeKeyAndVisible message?\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 \cf0 \ulnone \
@@ -348,10 +431,8 @@ Making window visible: means the window will be brought to front and completely 
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
 \b \cf0 \ulnone \
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 ___________________________\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 -What is UIViewController? Explain view controller life cycle ?\
+___________________________\
+-What is UIViewController? Explain view controller life cycle ?\
 \pard\tx940\tx1440\pardeftab720\li1440\fi-1440
 \ls1\ilvl1\cf0 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720
@@ -388,6 +469,13 @@ Making window visible: means the window will be brought to front and completely 
 \b \cf0 \
 ___________________________\
 - What is navigation controller?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 *Navigation view controller is a special kind of view controller, that manages a stack of view controllers and its corresponding views.\
+*It provides a drill-down interface for hierarchical content.\
+*It is always initialised with a  root view controller.(This will be the starting view at the bottom of the stack).\
+*Each view controller manages distinct view hierarchy and the navigation controller coordinates the navigation between these view hierarchies.
+\b \
 \
 ___________________________\
 - What is a modal view? Distinguish pushing over presentation\
@@ -404,13 +492,13 @@ ___________________________\
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b0 \cf0 \ul \ulc0 What is a responder?\
+\b0 \cf0 \ul What is a responder?\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 \cf0 \ulnone *A responder is an object that can respond to events and handle them.\
 *All responder objects are instances of classes that ultimately inherit from UIResponder class\
 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 \ul \ulc0 What is first responder?\ulnone \
+\cf0 \ul What is first responder?\ulnone \
 - In an app, the responder object that first receives many kinds of events is known as the first responder.\
 -The events can be key events, motion events or action messages. (Mouse events and multitouch events first go to the view that is under the finger, that view might or might not be the first responder).\
 -The first responder in a window is a view that the app deems to be best suited for handling an event.\
@@ -429,16 +517,60 @@ ___________________________\
  \
 
 \b0    UIButton <-UIcontrol <- UIView <- UIResponder <- NSObject \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\b \
+\b \cf0 \
 ___________________________\
 - What is UIControl ?\
-\
 ___________________________\
 \
 - How do you call a UIButtonAction programmatically ?\
-\
 ___________________________\
+\
+- What is prepareForReuse ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 *UITableView cells are reusable and the cells to be reused are obtained by calling 
+\i dequeReusableCellsWithReuseIdentifier:\
+*Due to performance reasons, you should reset attributes of the cell that are not related to content (like alpha, editing-state, color, selection state etc.)\
+*The tableview\'92s delegate -cellForRowAtIndexPath: should reset all the content when reusing a cell.\
+*The ideal method to do the resetting is by overriding prepareForReuse:  which gets called just before the object is returned from dequeReusableCellsWithReuseIdentifier\
+*If the cell object does not have an associated reuse identifier, this method is not called.\
+\
+NOTE:If you override this method, you must be sure to invoke the superclass implementation. 
+\i0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b \cf0 \
+- What is the use of reuse identifier in table views ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f1\b0 \cf0 *Reuse identifiers are used to identify similar cells in a UITableView i.e., cells that differ in content and otherwise have same layout.\
+*Reusing cells helps in performance enhancement. \
+*If we are reusing cells, instead of instantiating lot of cells we can instantiate as many cells as required i.e., as many that are visible.\
+*On scrolling to the area where there are cells that haven\'92t got their visual representation yet, instead of instantiating new ones, we can re-use the existing ones.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\b \cf0 \
+- What are layoutSubviews ?\
+- What is setNeedsDisplay ?\
+- What is setNeedsLayout ?\
+- What is viewDidLayoutSubviews ?\
+- What is drawRect? when is it called?\
+\
+- What is initWithCoder & initWithNibName ?\
+- What are size classes ?\
+- What is content hugging and content resistance/compression ?\
+\
+\
+- What is Core Data ? Explain Core data stack ?\
+- What is new in Core Location ?\
+- What is a UIBezierPath ?\
+- What is IBDesignables & IBInspectable ?\
+- Steps in submitting an app to a app store ?\
+- Tell me something about stack views introduced in iOS 9 ?\
+- What is the difference between content inset and content offset ?\
+\
 - What\'92s new in iOS 8 and iOS 9 ?\
 - Explain push notification flow / cycle ?\
 - Difference between a view and a layer ?\
@@ -449,19 +581,5 @@ ___________________________\
 - Can you decide to receive/not receive push notifications ?\
 - Why use table views / collection views instead of scroll views ?\
 - Can a app has multiple windows ? Difference between windows and view ?\
-- What is prepareForReuse ?\
-- What are layoutSubviews ?\
-- What is setNeedsDisplay ?\
-- What is setNeedsLayout ?\
-- What is initWithCoder & initWithNibName ?\
-- What are size classes ?\
-- What is content hugging and content resistance/compression ?\
-- What is Core Data ? Explain Core data stack ?\
-- What is new in Core Location ?\
-- What is a UIBezierPath ?\
-- What is IBDesignables & IBInspectable ?\
-- Steps in submitting an app to a app store ?\
-- Tell me something about stack views introduced in iOS 9 ?\
-- What is viewDidLayoutSubviews ?\
-- What is the difference between content inset and content offset ?\
-- What is the use of reuse identifier in table views ?}
+\
+}
