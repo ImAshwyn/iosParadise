@@ -1,0 +1,149 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf130
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww19600\viewh14120\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+
+\b - What is introduced in Xcode 7 ?
+\b0 \
+\
+\
+\
+
+\b - What is base SDK ?\
+
+\b0 \
+Base SDK defines which version of the SDK to build against, which APIs are available for use. (Base SDK >= Deployment Target)\
+\
+\
+
+\b - What is deployment target ?\
+
+\b0 \
+Deployment Target is the minimum required iOS version that your app needs to run.\
+\
+Example : If you want your app to use the latest APIs introduced in iOS 8.4 and you want your app to support users using iOS 6.1\
+Set Base SDK to iOS 8.4  and deployment target to iOS 6.1.\
+Base SDK >= Deployment Target\
+\
+\
+
+\b - What are targets ?
+\b0 \
+\
+A target specifies a product to build and contains instructions for building the product from a set of files in a project or workspace.\
+A target defines a single product.\
+Projects can contain one or more targets , each target produces one product.\
+However there can be only one active target at a time. Xcode scheme specifies the active target.\
+The instructions for building a target takes the form of build settings and build phases, which you can edit in the Xcode project editor.\
+A target inherits the projects settings but you can override the settings for a particular target by selecting that target.\
+\
+\
+
+\b - What is an app bundle ?
+\b0 \
+\
+Bundles are way of packaging executable code.\
+An iOS app bundle contains the app executable and any resources used by the application like app icon, launch images and other images, info.plist , the settings filled the main window.nib.\
+\
+\
+
+\b - What is a bundle Id ?\
+\
+
+\b0 The bundle ID is a unique identifier that identifies a single app and cannot be used by other teams.\
+\
+\
+
+\b - What is App Id ?
+\b0 \
+\
+An App ID is a 2 part string used to identify one or more apps from a single development team.\
+The string consists of a 
+\b Team ID 
+\b0 and a 
+\b bundle ID search string
+\b0  with a period separating the two parts.\
+The team ID is supplied by Apple and is unique to a development team & the bundle ID is supplied by you either to match the \
+bundle ID of a single app or a set of apps.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic 5A6D049F-A694-41BE-BAFA-ECD458A9A316.png \width6840 \height2520
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - What are the different types of App IDs ?\
+
+\b0 \
+  
+\b - Explicit App ID
+\b0  : Used for a single app.\
+\
+For an explicit App ID to match an app, the team ID in the App ID must equal the team ID associated with the App and\
+the bundle ID search string must equal the bundle ID for the app.\
+\
+\
+  -
+\b  Wild Card App ID
+\b0  : Used for a set of apps.\
+\
+A wildcard App ID contains an asterisk as the last part of its bundle Id search string.\
+The asterisk replaces some or all of the bundle ID in the search string.\
+\
+\
+
+\b - What are provisioning profiles ?\
+
+\b0 \
+A provisioning profile is a collection of digital entities that uniquely ties developers and devices to an authorised iPhone development team,\
+thus enabling the device to be used for testing. \
+A development provisioning profile must be installed on each device on which you wish to run the app.\
+Each profile will contain a set of iPhone Development Certificates , Unique Device Identifiers and the App ID.\
+Devices specified within the profile can be used for testing only by those individuals whose iPhone development certificates are included in the profile.\
+A device can have multiple provisioning profiles\
+
+\b \
+\
+- What is code signing ?\
+\
+
+\b0 Code signing your app lets users trust that your app has been created by a source known to apple & that it hasn\'92t been tampered with.\
+All apps must be code signed & provisioned to launch on a device, to use certain services , to be distributed for testing, or to be uploaded to iTunes Connect. \
+You create signing identities stored in your keychain & certificates stored in your member centre to sign and provision your app.\
+\
+Code signing ensures that :\
+- Your app is built and signed by you or a trusted team member.\
+- Apps can run only on designated devices.\
+- Your app isn\'92t using any service you didn\'92t add.\
+- Only yo can upload builds of your app to the iTunes Connect.\
+
+\b \
+\
+
+\b0 What is an IPA ?\
+Can there be 2 apps with the same bundle id ?\
+\
+//\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+What are XCAssets ? How to use it ?\
+How do you add a launch image ?\
+\
+What are the frameworks that are linked to your target by default ?\
+What is launch screen. storyboard ? How can it be used ?\
+\
+What are instruments ? Name a few ?\
+What are static and dynamic libraries ? How do you create them ?\
+\
+Explain view debugging ? Which version of Xcode supports this ?\
+What are cocoa pods ?\
+What is the difference between xcworkspace and xcodeproject ?\
+How do you create a bridge between Objective C & Swift ?\
+\
+How do you make sure a code is applicable across targets ?\
+How do you create a module in Xcode ?\
+}

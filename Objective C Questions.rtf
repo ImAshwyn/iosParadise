@@ -1,53 +1,75 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
-{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf130
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fswiss\fcharset0 Helvetica;\f2\fswiss\fcharset0 Helvetica-Light;
+}
 {\colortbl;\red255\green255\blue255;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
 \paperw11900\paperh16840\margl1440\margr1440\vieww21000\viewh13580\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
-\f0\fs28 \cf0 -  What is Objective C ? \
-\
+\f0\b\fs28 \cf0 -  What is Objective C ? \
+
+\b0 \
 An Object oriented programming language mainly used by Apple for OS X and iOS operating system and their respective APIs cocoa and cocoa touch.\
 It is built on top of C, by adding features of Small Talk programming language making it object oriented.\
 Initially it was developed by NeXT for its NextStep OS , later it was taken over by Apple.\
 \
 \
-- How is Objective C different from C++ ?\
-\
+
+\b - How is Objective C different from C++ ?\
+
+\b0 \
 Objective C doesn\'92t support multiple inheritance, C++ does.\
 Objective C will allow you to send messages to nil , whereas C++ will crash if you try to do the same.\
 Objective C lacks the namespace feature of C++.\
 Objective C is focussed on run time decisions and heavily dependent on its run time libraries to handle inheritance and polymorphism , whereas\
 C++  the focus lies on static compile time decisions.\
-\pard\pardeftab720\sl420
+\pard\pardeftab720\sl420\partightenfactor0
 \cf0 Objective C has categories which allows you to add functionality to existing classes. C++ doesn\'92t have this.\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 \cf0 \
 \
-- What is foundation framework ?\
-\
+
+\b - What is foundation framework ?\
+
+\b0 \
 Defines a base layer of Objective C classes.\
 Includes the root object class, classes representing basic data types, collection classes for storing other objects and classes representing system information like dates.\
 Makes software development easier by introducing consistent conventions for things such as deallocation.\
 \
 \
-- What are protocols ?\
-\
+
+\b - What are protocols ?\
+
+\b0 \
 A protocol is a group of related properties and methods that can be implemented by any class.\
 A class will have to adopt the protocol to implement the methods in it.\
 \
 \
-- What are categories ?\
+
+\b - Can you add properties in protocols ?\
 \
-A group of related methods for a class and all the methods are available as if they are declared in the main interface file.\
+
+\b0 Yes. You can add properties in protocols. You need to call @synthesize in the class that adopts the protocol and uses the property.\
+Or you need to write the setter and getter for the property in that class.
+\b \
+
+\b0 \
+\
+
+\b - What are categories ?\
+\
+
+\b0 A group of related methods for a class and all the methods are available as if they are declared in the main interface file.\
 Help in providing modularity in projects.\
 You can add methods to a class for which u don\'92t have the source code.\
 You can also override existing methods in already existing class.\
 \
 \
-- What are extensions ?\
-\
+
+\b - What are extensions ?\
+
+\b0 \
 Extensions are categories without the category name. Also called anonymous categories.\
 Special type of category that require methods to be defined in the implementation file of associated class rather than the implementation defined in the category.\
 Can be only added to the class for which you have the source code.\
@@ -55,77 +77,515 @@ Can be used to override publicly declared properties. , i.e you can make a reado
 Any method or variable declared is not even accessible to the inherited class.\
 \
 \
-- What are the differences between categories & extensions ?\
-\
+
+\b - What are the differences between categories & extensions ?\
+
+\b0 \
 Source Code : Not Required in Categories . Required in extensions\
 Categories are inherited by the child class. Extensions are not inherited.\
-Properties cannot be added to categories but can be added to extensions.\
 Method definitions are written in the category .m file itself. Whereas in extensions definitions are written by the respective class implementation file.\
 Categories are public. Extensions are private.\
 \
-What are formal & informal protocols?\
 \
+
+\b - What are formal & informal protocols?\
+
+\b0 \
 Informal protocols are categories that implicitly makes all objects adopters of the protocol.\
 Implementation of the methods is optional.\
 Formal protocols are a set of methods that the client classes are expected to implement.\
 \
 \
-What are delegates ?\
-What is a retain cycle ?\
-What is NSCoding ? \
-What is NSCopying ?\
-What are notifications ?\
-What is JSONSerialization ?\
-What is NSXMLParser ?\
-What is strong , retain , weak and copy ?\
-What is the difference between atomic and non atomic properties ?\
-When does an object get deallocated ?\
-What are blocks ?\
-Difference between protocols & blocks ?\
-Difference between categories & subclassing ?\
-What are predicates ?\
-What are leaks ?\
-How do you introduce leaks ?\
-How do you prevent leaks ?\
-What is GCD ?\
-What is NSOperation ?\
-What is NSURLConnection ?\
-What is NSURLSession ?\
-Differences between NSURLConnection and NSURLSession ?\
-What are predicates ?\
-What are comparators ?\
-What is KVC & KVO ?\
-When does copy behave like retain ?\
-What is the difference between properties & ivars in .m file ?\
-Difference between delegates and blocks?\
-How do you define your own autorelease pools ?\
-Difference between function pointers , selectors and blocks.\
-Can the key in a NSDictionary be other than NSString ?\
-Why use weak references within a block ?\
-Is there a class whose base class is not NSObject ?\
-Difference between nil / Nil / NULL / NSNull ?\
-Difference between copy and mutable copy ?\
-Difference between #import\'94\'94  and #import<>\
-What is a NSBundle ?\
-What is a plist ?\
-Explain the usage of @dynamic ?\
-What is a responder chain and first responder ?\
-What is a singleton class ? How is it different from using a global variable ?\
-Difference between synchronous & asynchronous calls ?\
-Difference between serial and concurrent queues ?\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 \expnd0\expndtw0\kerning0
-What is performSelector:withObject:? What if I have to performSelector:withObject: but pass 3-4 arguments to the method? (Hint: NSInvocationOperation\
-Who calls dealloc method? Can we implement dealloc in ARC? If yes, what is the need to do that?\
-How does dispatch_once manages to run only once ?\
-What is method swizzling ?\
-Does a thread created using performSelectorInBackground: withObject: create its own autorelease pool ?\
-\pard\tx220\tx720\pardeftab720\li720\fi-720\sl420\sa160
-\ls1\ilvl0\cf0 \expnd0\expndtw0\kerning0
-What is NSAutoReleasePool ? When to use them ?\
-What is NSNullable ?\
-- What are the different types of dispatch queues ?\
-- Is main queue a serial or a concurrent queue ? \
+
+\b - What are delegates ?\
+
+\b0 \
+Delegate is a design pattern that allows one object to send a message to another when certain things happen. So one object acts on behalf of the other.\
+The delegating object keeps a reference to the other object , the delegate & at an appropriate time sends messages to it.\
+The message informs the delegate of an event the delegating object has just handled or is about to handle.\
+\
+\
+
+\b - What is a retain cycle ?\
+
+\b0 \
+Retain cycle is the condition when 2 objects keep a reference to each other and are retained.\
+Since both the objects are trying to retain each other its impossible to release.\
+So use weak for delegates.\
+\
+\
+
+\b - How can you avoid retain cycle ?\
+
+\b0 \
+1) Any object must never retain its parent. Use weak pointers to parent from child.\
+2) Use weak self within blocks because blocks capture self used within it and if the block is assigned to a block property it creates a retain cycle.\
+\
+\
+
+\b - What are notifications ?\
+
+\b0 \
+Notifications are used to send messages between objects that do not know each other. They broadcast messages to a set of listeners.\
+Example : You might have a network reachability check in your app delegate and post notification whenever the reachability changes.\
+Other objects would listen to that and behave accordingly when the network goes up or down.\
+\
+\
+
+\b - Can you observe the same notification more than once ?\
+
+\b0 \
+Yes. Even if the notification is posted only once ,  the selector gets called as many times you have added the observer for the notification.\
+\
+\
+
+\b - Should singleton classes use delegates or notifications ?\
+
+\b0 \
+A delegate should only be used when the object being the delegate owns the object doing the delegation.\
+Example : A view controller owns a table view and is the delegate of the table view.\
+So avoid using delegation on a singleton class. A singleton doesn\'92t really have an owner. Or you can consider itself or the application to be the owner.\
+One object might set itself as the delegate of the singleton but then another might come break the relationship and set itself as the delegate.\
+The original delegate wouldn\'92t know this had happened and still think it is the delegate.\
+Therefore if you are using a singleton avoid using delegates and opt for notifications.\
+However UIApplication , a singleton class has an app delegate. This is because it is very unusual to set a delegate on the UIApplication other than when\
+it\'92s instantiated.\
+\
+\
+
+\b - What is a leak ? What is a dangling pointer ?\
+
+\b0 \
+A leak is a situation where a memory that is no longer needed is not released.\
+A dangling pointer is a pointer that points to a memory location that has been deallocated.\
+\
+\
+
+\b - How do you introduce leaks ?\
+
+\b0 \
+By using self within blocks and that block is assigned to a block property. This creates a retain cycle and hence a memory leak.\
+If an object retains its parent , there will be a retain cycle and hence a leak.\
+\
+\
+
+\b - How do you prevent leaks ?\
+
+\b0 \
+Use weak references within blocks. \
+\
+\
+
+\b - What are blocks ?\
+
+\b0 \
+Block is an objective C feature that allows you to create distinct segments of code that can be passed around to methods or functions as if they\
+were values.\
+Blocks are implemented as closures, which means that you can have access to non local variables.\
+Non-local variables are variables defined in the blocks enclosing lexical scope but outside of the block itself.\
+Non-local variables are copied and stored with the block as const variables, which means they are read-only.\
+Trying to assign a new value to this variable within the block will result in a compiler error.\
+The fact that non-local variables are copied as constants means that a block doesn\'92t just have access to non-local variables-it creates a snapshot of them.\
+Non-local variables are frozen at whatever value they contain when the block is defined & the block always uses that value, even if\
+the non local variable changes later on in the program.\
+\
+\
+
+\b - What is the usage of the __block storage modifier ?\
+
+\b0 \
+Freezing non local variables is actually a safety feature that prevents you from accidentally changing them from within the block.\
+However if you want to change the this behaviour use the __block keyword for the variable.\
+This tells the block to capture the variable by reference, creating a direct link between the variable outside the block and within the block.\
+\
+\
+
+\b - Difference between categories & subclassing ?\
+
+\b0 \
+A category is useful if you want to alter all the instances of the class with minimal code.\
+Subclassing is more useful if you want to alter only some instances and retain the original behaviour for others.\
+\
+\
+
+\b - Difference between delegates & blocks ?\
+
+\b0 \
+Blocks are particularly useful as callbacks when the block carries both the code to be executed on callback and the data needed during the execution.\
+Delegate is an object that acts on behalf of ,or in co-ordination with another object when that object encounters an event in the program.\
+\
+\
+
+\b - What is the difference between atomic and non atomic properties ?\
+
+\b0 \
+Atomic is the default value.\
+With atomic, the synthesised setter/getter will ensure a whole value is returned from a getter or set by the setter , regardless of setter activity on another thread.\
+That is if thread A is in the middle of the getter and thread B calls the setter, an actual value , an autoreleased object will most likely be returned to the caller in A.\
+In Non-Atomic , no such guarantees are made. Thus non-atomic is faster than atomic.\
+\
+What atomic doesn\'92t guarantee is thread safety. That is if thread A is calling the getter simultaneously with thread B and thread C calling the setter with diff values,\
+thread A may get any one of the three values returned- one prior to the setters being called or the values passed into the setters in thread B or C.\
+Likewise the object may end up with the value from B or C , no way to tell.\
+\
+\
+
+\b - What is strong , weak , assign and copy ?\
+\
+
+\b0 A 
+\b strong 
+\b0 reference means that you want to own the object you are referencing with this property / variable.\
+The compiler will take care that any object you assign to this property will not be destroyed as long as (or any other object) points to it\
+with a strong reference. Only when you set the property to nil, will the object gets deallocated (assuming there are no other strong references to it.)\
+\
+In contrast ,with a 
+\b weak 
+\b0 reference you signify that you don\'92t have control over the objects lifetime.\
+The object you are referencing weakly only lives on because at least one other object holds a strong reference to it.\
+Once that is longer the case , the object gets destroyed & weak property gets automatically set to nil.\
+The most frequent uses of weak references in iOS are :\
+- delegate properties , to avoid retain cycle.\
+- subviews of a view controllers main view , because they are already strongly held by the main view.
+\b \
+
+\b0 \
+
+\b Assign 
+\b0 is like weak but there\'92s no zeroing of pointer when it leaves the heap.\
+That is if the object a weak property points to gets deallocated , the weak property will be automatically set to nil,\
+so you never run the risk of accessing garbage. If you use assign, that won\'92t happen. So if the object gets deallocated from under you\
+and you try to access it , you run the risk of accessing garbage.\
+Assign is usually used for ints , floats and other non object types.\
+\
+
+\b Copy 
+\b0 creates a new object with a retain count of 1.\
+But note this is not the case always. Copy of an immutable object just increases the retain count.\
+Copy of a mutable object creates an immutable object with retain count of 1.\
+\
+\
+
+\b - When does an object get deallocated ?\
+
+\b0 \
+When its retain count becomes zero.\
+\
+\
+
+\b - What is GCD ?\
+
+\b0 \
+GCD is apples library to support concurrent code.The uses are :\
+ - Improves apps responsiveness by moving computationally expensive tasks to background.\
+ - Provides easier concurrency model and avoids concurrency bugs.\
+ - Optimises code with higher performance primitives for patterns such as singletons.\
+\
+
+\b - Difference between synchronous & asynchronous calls ?\
+
+\b0 \
+Synchronous calls are the ones in which the calling function waits for the task to finish.\
+Asynchronous calls are the ones in which the calling function doesn\'92t wait for the task to finish and proceeds to the next task.\
+\
+
+\b \
+- Difference between serial and concurrent queues ?\
+
+\b0 \
+A serial queue is one which only one task is executed at a time. Tasks begin and end in FIFO order.\
+A concurrent queue is one in which many tasks are executed at a time. The tasks begin in FIFO order but there is no\
+guarantee on the order of completion.\
+\
+\
+
+\b - What is NSOperation ?\
+
+\b0 \
+NSOperation represents a single unit of work. It\'92s an abstract class that offers a useful , thread safe structure for modelling state, priority , dependencies \
+and management.\
+\
+\
+
+\b - What are the differences between GCD and NSOperation ?\
+
+\b0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b \cf0 GCD \
+\
+	
+\b0 GCD is a lightweight way to represent units of work that are going to be executed concurrently.
+\b \
+	
+\b0 Tasks are executed in FIFO order.
+\b \
+
+\b0 	You don\'92t schedule these works. The system takes care of scheduling for you.\
+	Adding dependency among blocks can be a headache.\
+	Also cancelling or suspending a block creates extra work.\
+\
+
+\b NSOperation\
+\
+	
+\b0 Built on top of GCD\
+	Don\'92t follow FIFO. You can set an execution priority for operations and add dependencies between operations which means some\
+		operations will be executed only after the completion of other. Hence no FIFO.
+\b \
+
+\b0 	By default they operate concurrently. While you can\'92t change its type to serial queues, there is still a workaround to execute tasks\
+		in operation queues in sequence by adding dependencies between operations.
+\b \
+
+\b0 	You can add dependency among operations.\
+	You can re-use , cancel or suspend operations.\
+	NSOperation is compatible with Key-Value observing. i.e you can observe the following keys to control other parts of your app.\
+	
+\f2\fs26 (\expnd0\expndtw0\kerning0
+isCancelled, isConcurrent, isExecuting, isFinished,\'a0 isReady\kerning1\expnd0\expndtw0 )
+\f1\fs28 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0 \cf0 \
+
+\b - Explain dynamic typing & dynamic binding in Objective C ?\
+
+\b0 \
+
+\b Dynamic typing
+\b0  in Objective C means, the class of an object of type id is not unknown at compile time, and instead discovered at runtime.\
+For example in the following example , the class of foo isn\'92t known until we send a message to it .\
+\
+id foo = @\'93One Two Three\'94;\
+NSArray *a =  [foo componentsSeparatedByString:@\'93 \'94];\
+\
+Instead of using the id data type had we done this,\
+NSString *foo = @\'93One Two Three\'94;\
+\
+then we would be using static typing instead of dynamic typing.\
+\
+
+\b Dynamic binding 
+\b0 means that the compiler doesn\'92t know which method implementation will be selected.\
+Instead the method implementation is looked up at runtime when the message is sent.\
+\
+[foo description] results in a different method invocation, if foo is an instance of NSArray rather than an instance of NSString.\
+\
+\
+
+\b - When we say Objective C is a runtime language , what does it mean ?\
+
+\b0 \
+Objective C runtime is runtime library that is open source , written in C and adds object oriented capabilities to C.\
+It is only because of objective C runtime that it is legal to send messages to objects to which they don\'92t know how to respond to.\
+Methods are not bound to implementation until runtime.Objective C defers its decision to runtime from compile time as much as it can.\
+At run time it can decide to which object it will send a message to.\
+\
+\
+
+\b - Differences between NSURLConnection and NSURLSession ?\
+
+\b0 \
+NSURLSession by default runs on the background thread but you have to force NSURLConnection to a background thread.\
+NSURLSession can perform downloads in the background even when your app is in the background or suspended state.\
+NSURLSession can be configured as you want using NSURLSessionConfiguration.\
+NSURLSession supports private browsing.\
+In NSURLSession you suspend and resume tasks as you want.\
+\
+\
+
+\b - What is KVC (Key Value Coding) ?\
+
+\b0 \
+Normally instance variables are accessed through properties or accessors, but KVC gives another way to access variables in the form of strings.\
+That is your class acts as a dictionary and your property name for example age, becomes key and the value that property holds becomes value for that key.\
+\
+Example : You have employee class with age property. You access it like :\
+NSString *age = emp.age ; //Getter\
+emp.age = @\'9320\'94; //Setter\
+\
+With KVC , it works like this :\
+\
+[emp ValueForKey:@\'93age\'94];  //Getter\
+[emp setValue:@\'9320\'94 forKey:@\'93age\'94]; //Setter\
+\
+\
+
+\b - What is KVO (Key Value Observers) ?\
+
+\b0 \
+The mechanism with which objects are notified when there is any change in any of its property is called KVO.\
+For Example : When a person object is interested in getting notification when the accountBalance property is changed in BankAccount class.\
+To achieve this the person object must register as an observer of the BankAccount\'92s accountBalance property by sending \
+addObserver: forKeyPath: options: context: message.\
+\
+\
+
+\b - When does copy behave like retain ?\
+
+\b0 \
+When you a copy property to a NSString (or any immutable), the compiler treats the property as a strong.\
+Because there is no point creating a copy of NSString since it anyways cannot be altered.\
+\
+\
+
+\b - What is the difference between properties & ivars in .m file ?\
+
+\b0 \
+- Properties enforce access restrictions (readonly)\
+- Properties enforce memory management policies.\
+- Properties are used as a part of thread safety.\
+- Properties provide the opportunity to use setters and getters.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \expnd0\expndtw0\kerning0
 - Explain a situation where you would use NSMutableCopy ?\
-- What is the difference between using -(id) and -(instanceType) ?\
-- What is an attributed string ?}
+
+\b0 \
+The copy method returns the object created by implementing the NSCopying protocols copyWithZone.\
+The returned value will be immutable.\
+\
+The mutable copy method returns an object created by implementing the NSMutableCopying protocols mutableCopyWithZone.\
+The returned value will be mutable.\
+\
+So basically use mutableCopy when you want to create a mutable version of an object from an immutable version.\
+(DO NOT TYPECAST BUT USE MUTABLE COPY INSTEAD).\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \kerning1\expnd0\expndtw0 - What is a singleton class ? How is it different from using a global variable ?\
+
+\b0 \
+A singleton class is a design pattern that allows only one instance of an object to be created.\
+This is useful when exactly one instance is needed to coordinate across the system.\
+\
+A singleton instance is created only when you call it. \
+Whereas global instance is created when the program starts.\
+// More differences to be added.\
+\
+\
+
+\b - Difference between nil / Nil / NULL / NSNull \
+\
+
+\b0 NULL i\expnd0\expndtw0\kerning0
+s the original C style value given to a pointer that is deemed to point to no explicit address.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 nil is the Objective C equivalent of the same thing , applied to Objective C objects. defined as #define nil NULL.\
+Nil is the null value for Objective C classes.\
+NSNull is a singleton object used to represent NULL values in situations where nil is prohibited. (Example : NSArray, NSDictionary).\
+So [NSNull Null] is a wrapper for nil.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl420\sa160\partightenfactor0
+\ls1\ilvl0\cf0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl420\sa160\partightenfactor0
+\ls1\ilvl0
+\b \cf0 - What is the difference between using -(id) and -(instanceType) in return types ?\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\b0 \cf0 \kerning1\expnd0\expndtw0 The type id simply says that the method returns a reference to an object. It could be any object.\
+The instancetype says the method will return a reference to an object of the same type as the class on which the method was called.
+\b \
+\ls1\ilvl0
+\b0 Instance type adds type safety. It avoids having to use type casting when you call the method.\
+\ls1\ilvl0
+\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+- Difference between message passing and performSelector.
+\b0 \
+\
+PerformSelector allows you to dynamically determine which selector to call on the given object.\
+That is you do not have to determine the selector before runtime.\
+Also there are some selectors (with delay) that will allow you to asynchronously dispatch a message to an object ,\
+that will be executed later on in the loop.\
+\
+\
+
+\b - What is NSCoding ? \
+\
+NSCoding 
+\b0 is a protocol that you can implement on your data classes to support encoding & decoding your data into the buffer,\
+which can then be persisted onto disk.\
+\
+We have to implement two methods , 
+\b encodeWithCoder (to encode) 
+\b0 and 
+\b initWithEncoder
+\b0  
+\b (to decode)
+\b0 .
+\b \
+\
+
+\b0 \
+
+\b - What is NSPredicate ?\
+\
+
+\b0 NSPredicate is a foundation class that specifies how a data should be fetched or filtered.\
+\
+\
+
+\b - What is method swizzling ?\
+\
+
+\b0 Method swizzling is the act of swapping the implementation of two selectors as a program runs.\
+This dynamic program modification is equivalent to monkey patching available in other languages.\
+\
+\
+
+\b - What are associated objects ?\
+\
+
+\b0 Associated objects or associated references are a feature of Objective C that allows objects\
+to associate arbitrary values at runtime.\
+It refers to the following 3 functions defined in <objc/runtime.h>\
+\
+- objc_setAssociatedObject\
+- objc_getAssociatedObject\
+- objc_removeAssociatedObject\
+\
+This allows developers to add custom properties to existing classes in categories which is otherwise a notable shortcoming of Objective C.\
+\
+\
+
+\b - What is the difference between using setObjectForKey and setValueForKey in NSMutableDictionary ?\
+\
+
+\b0 With setValueForKey, the value can be nil. It internally calls setObjectForKey and if the value is nil, it calls removeObjectForKey,\
+But with setObjectForKey , if the value is nil , the app crashes at runtime.\
+\
+\
+
+\b - Can the key in a NSDictionary be other than NSString ?
+\b0 \
+\
+The requirement for the key object is that it must conform to the NSCopying protocol.\
+So you can use NSNumber as key.\
+\
+\
+
+\b - \expnd0\expndtw0\kerning0
+How does dispatch_once manages to run only once ?
+\b0 \
+\kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf0 GCD allows you to specify a token to a piece of code that you are going to execute. \
+If GCD detects that this identifier has been passed to the framework before , it won\'92t execute the code again.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0 \cf0 \
+\
+
+\b - Explain the usage of @dynamic ?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \expnd0\expndtw0\kerning0
+\
+}
