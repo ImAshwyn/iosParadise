@@ -1,0 +1,988 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf130
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28180\viewh15200\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b\fs28 \cf0 \ul \ulc0 App Level\
+Object Level\
+Apple API\'92s\
+Frameworks\
+Persistent Storage\
+OS Level\
+Xcode Level\
+\
+App Level\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone - What does the main.m do in iOS ?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 *This file contains the function main() which is the entry point for execution of any C program. Since objective C is the superset of C the same same holds good for objective C as well.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul What does main() do?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone *The functions parameters 
+\i argv
+\i0  and 
+\i argc
+\i0  contain info about the command line parameters passed to the executable on launch.\
+*It consists of on \ul auto-release poo\ulnone l to free up memory from the objects.\
+*It calls \ul UIApplicationMain()\ulnone  which creates an application object.\
+*It \ul returns\ulnone  value returned by UIApplicationMain() to the caller (The shell that launched the executable) \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - What is  the role of UIApplicationMain ?
+\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+*This function instantiates the \ul application object\ulnone  from the principal class (UIApplication) and instantiates the delegate from the given class and sets the delegate for the application.\
+*It also sets up the \ul main event loop\ulnone , including the applications run loop and begins processing events.\
+*If applications Info.plist specifies a main nib file to be loaded, by including NSMainNibFile key and a valid file name for the value, the function\ul  loads that nib file\ulnone .\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 *Despite the declared return type, this function \ul never returns\ulnone .\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul Wrap-up\ulnone :All in all the job of main is to hand control off to UIKIt framework. The UIApplicationMain function handles this process by creating core objects of your app (app object), loading your app\'92s user-interface from the available storyboard files, calling your custom code( to do some initial setup)\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - Brief details on the parameters specified for  UIApplicationMain function?\
+\
+If Non-ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i\b0 \cf0 int main(int argc, char *argv[])\
+\{\
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];\
+    int retVal = UIApplicationMain(argc, argv, nil, nil);\
+    [pool release];\
+    return retVal;\
+\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i0\b \cf0 If ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i\b0 \cf0 int main(int argc, char *argv[])\
+\{\
+   @autorelaesepool  \{\
+     return UIApplicationMain(argc, argv, nil, nil);\
+   \}\
+\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i0\b \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 *This function creates the main application object. \
+*If the third parameter is specifies nil(default), it will create an instance of 
+\i UIApplication
+\i0 , else you can subclass 
+\i UIApplication
+\i0  and provide it as third parameter. \
+*If the fourth parameter if not nil is interpreted as the name of the class for application delegate. If it is nil, it signifies that app delegate will be created in the main NIB file.\
+*Next 
+\i UIApplicationMain()  
+\i0 loads and parses the app\'92s Info.plist. If it contains a key named \'91Main nib file base name(NSMainNibFile)\'92, the function will also load the NIB specified here.\
+*UIApplicationMain() then creates the application\'92s  \ul runloop \ulnone that is used by UIApplication instance to process events such as touches or network events.\
+*Before the app object processes the first event, it finally sends application:didFinishLaunchingWithOptions: a message to its delegate, giving us a chance to do our own setup. The least we have to do here is to put our main window on the screen by sending it a 
+\i makeKeyAndVisible
+\i0  message\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - What is UIApplication ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul What is it?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone *UIApplication class provides a centralised point of control and coordination for apps running in iOS.\
+*Every app has exactly one instance of UIApplication object.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul \
+When is it created?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone *When an app is launched, the system calls the UIApplicationMain function, which creates a singleton UIApplication object.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul What does it do?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone *The major role of the application object is to handle the initial routing of the incoming user events.\
+*It dispatches action messages forwarded to it by control objects(instances of UIControl class) to different target objects.\
+*It maintains a list of open windows(UIWindow objects) and through those can retrieve any of the apps UIView objects.\
+*UIApplication class defines a delegate that conforms to UIApplicationDelegate protocol and must implement some of the protocol methods.\
+  The app objects informs the delegate of  significant runtime events like app launch, low memory warnings, app termination etc to respond appropriately.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul What else it can do?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone App object can do the following(device specific behaviour)\
+*Temporarily suspend incoming touch events (beginIgnoringInteractionEvents)\
+*Register for remote notifications (registerForRemoteNotifications)\
+*Determine whether there is an installed app registered to handle a URL Scheme (canOpenURL:)\
+*Schedule and cancel notifications(scheduleLocalNotification:, cancelLocalNotification:)\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - What are the different app states ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \ul \
+Not running State\ulnone :  The app has not been launched or was running but was terminated by the system.\
+\ul Inactive state\ulnone : \
+*The app is running in the foreground but is currently not receiving events. (It may be executing other code though.) \
+*An app usually stays in this state only briefly as it transitions to a different state. The only time it stays inactive for any period of time is when the user locks the screen or the system prompts the user to respond to some event, such as an incoming phone call or SMS message.\
+\ul Active state\ulnone :\
+*The app is running in the foreground and is receiving events. This is the normal mode for foreground apps.\
+\ul Background state\ulnone :  \
+*The app is in the background and executing code. \
+*Most apps enter this state briefly on their way to being suspended. However, an app that requests extra execution time may remain in this state for a period of time. \
+*In addition, an app being launched directly into the background enters this state instead of the inactive state. \
+\ul Suspended state\ulnone :\
+*The app is in the background but is not executing code. \
+*The system moves apps to this state automatically and does not notify them before doing so. While suspended, an app remains in memory but does not execute any code. \
+*When a low-memory condition occurs, the system may purge suspended apps without notice to make more space for the foreground app.
+\b \
+\
+\
+- What is app delegate ?\
+\
+- Explain app life cycle?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul Object Level\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone -What is automatic reference counting(ARC)?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*ARC is a compiler level feature that simplifies the process of managing the lifetimes of objective-c objects\
+*Instead of we having to remember when to retain or release an object, ARC evaluates the lifetime requirements of our objects and automatically inserts the appropriate method calls at compile time.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - Why Auto-released pool is required in main even while using ARC, when ARC manages the memory for us?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*ARC just inserts the retain-release for the objects, thereby removing the retain count (making retain count = 0) but it does not free the memory immediately like in C.\
+*ARC is not garbage collection.\
+*Hence we need to insert autorelease pool object(iOS <=4.0) or autorelease pool blocks (Ios>=5.0) to free up the memory of those objects whose retain count is 0.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - Should auto-release pool be used elsewhere in the code other than main?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*Yes, sometimes when we create a lot of objects and most of them being one-time usage, we want to free up memory used after its usage without further delay.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 Non-ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i\b0 \cf0 @autoreleasepool \
+\{\
+    MyObject *obj = [[MyObject alloc] init]; // no autorelease call here\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i0 \cf0     //Since MyObject is never released its a leak even when the pool exits\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i \cf0 \}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i0\b \cf0 Non-ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i\b0 \cf0 @autoreleasepool \
+\{\
+    MyObject *obj = [[[MyObject alloc] init] autorelease]; \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i0 \cf0     //Memory is freed once the block ends\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i \cf0 \}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i0\b \cf0 ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i\b0 \cf0 @autoreleasepool \
+\{\
+    MyObject *obj = [[MyObject alloc] init]; \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i0 \cf0     //No need to do anything once the obj variable is out of scope there are no strong pointers so the memory will free\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i \cf0 \}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i0\b \cf0 ARC\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i\b0 \cf0 MyObject *obj
+\i0  //strong pointer from elsewhere in scope  
+\i \
+@autoreleasepool \
+\{\
+   obj = [[MyObject alloc] init]; \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i0 \cf0     //Not freed still has a strong pointer \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i \cf0 \}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i0\b \cf0 -What is run loop?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 The run loop is basically an infinite loop that causes 
+\i UIApplicationMain()
+\i0  to never return. It is responsible to process touch and network events.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul Apple API\'92s\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul Push Notifications\ulnone \
+\
+-What is Apple Push Notification Service(APNS)?
+\b0 \
+\
+*It is an Apple service that is the centre-piece of remote notification feature.\
+*It is a robust and highly efficient method for propagating information to OS X and iOS devices.\
+*Each device establishes an accredited and encrypted IP connection with the service and the receives notification over this persistent connection.\
+*APNS transports and routes a remote notification from given provider to a given device.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 -What does Apple Push Notification comprises of?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*APN\'92s consist of two pieces of data- device token and payload\
+*The device token (analogous to phone number) contains information that enables the APNS to locate the device on which client app is installed.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - Explain push notification flow / cycle ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*The app registers for push notifications. The user has to confirm that he wishes to receive notifications.\
+*The OS ask APNS for device token.\
+*The app receives the device token.\
+*The apps sends token to the provider.\
+*When something interesting happens, the provider sends a push notification to APNS server. \
+*The APNS sends push notification to the device.
+\b \
+\
+\
+- Explain the quality of service(QoS) provided by APNS\
+
+\b0 \
+*APNS includes a default QoS component that  performs store-and-forward function.\
+*If APNS attempts to deliver a notification when the device is offline, the notification(only one) is stored for a limited amount of time and delivers when the device becomes available.\
+*If multiple notifications are sent while the device is offline, each new notification causes the prior notification to be discarded. This behavior of keeping only the newest notification is referred to as coalescing notifications.\
+*If the device remains offline for a long time, any notifications that were being stored for it are discarded.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\
+- How can you send Push Notification to only a specific set of users? \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*The devices which intend to received push notifications forward the device token sent by APNS to the provider.\
+*Based on a specific logic, the provider can run a script to send notifications for specific device tokens\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\
+- Can you decide to receive/not receive push notifications ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*Yes. When the app registers for push notifications. The user has to confirm whether he wishes to receive notifications.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - How does APNS make sure that the notification sent by the provider will be sent only to the device containing the instances of the client app? \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+* To enable push notification following needs to be set \
+    -The app needs to be signed with a provisioning profile that is configured for push.\
+    -The server needs to sign its communications to APNS with an SSL certificate\
+* By doing so the provisioning profile and SSL certificate are closely tied together and are only valid for a single app ID.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - Explain notification payload. What is the maximum payload size ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*Each remote notification includes a payload. The payload contains information about how the system should alert the user as well as any custom data you provide. \
+*The maximum size allowed for a notification payload is 2 kilobytes (in iOS 8 and later). Earlier it was 256 bytes.\
+*Apple Push Notification service refuses any notification that exceeds this limit.\
+*For each notification, compose a JSON dictionary object. This dictionary must contain another dictionary identified by the key \ul aps\ulnone . \
+*The aps dictionary can contain one or more properties that specify the following user notification types:\
+	*An alert message to display to the user(alert)\
+	*A number to badge the app icon with(badge)\
+	*A sound to play(sound)\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - What is a silent notification? How can you support it?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*When a silent notification arrives, iOS wakes up your app in the background so that you can get new data from your server or do background information processing. \
+*Users aren\'92t told about the new or changed information(hence the name silent) that results from the notification, but they can find out about it the next time they open your app.\
+\
+To support silent remote notifications we need to add the following\
+- remote-notification value to the UIBackgroundModes array in your Info.plist file. \
+- 
+\i content-available
+\i0  property setting it to 1 in the 
+\i aps
+\i0  dictionary\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \ul Networking\ulnone \
+- What happens when a app that is downloading some data is sent to Background ?\
+\
+\ul Frameworks\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone - What is Cocoa and cocoa touch ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*Cocoa and Cocoa Touch are the application development environments for OS X and iOS, respectively. Both Cocoa and Cocoa Touch include the Objective-C runtime and two core frameworks:\
+   *\ul Cocoa\ulnone , which includes the Foundation and AppKit frameworks, is used for developing applications that run on OS X.\
+   *\ul Cocoa Touch\ulnone , which includes Foundation and UIKit frameworks, is used for developing applications that run on iOS.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - What are Foundation, AppKit/UIKit frameworks ?\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\b0 \cf0 \expnd0\expndtw0\kerning0
+\ul \
+The Foundation framework\ulnone  \
+*implements the root class, NSObject, which defines basic object behavior. \
+*implements classes that represent primitive types (for example, strings and numbers) and collections (for example, arrays and dictionaries). \
+*provides facilities for internationalization, object persistence, file management, and XML processing.\
+*use its classes to access underlying system entities and services, such as ports, threads, locks, and processes. \
+*is based on the Core Foundation framework, which publishes a procedural (ANSI C) interface.\
+\
+\ul AppKit and UIKit frameworks\ulnone  are used for developing an application\'92s user interface. \
+*These two frameworks are equivalent in purpose but are specific to a platform. \
+*They include framework/classes for \
+   event handling \
+   image-handling\
+   drawing & graphics(CoreGraphics), \
+   text processing(Core Text), \
+   data management (Core data & Sqlite)\
+   animation (Core Animation, OpenGL, Quartz2D)\
+   audio & video (Core audio, openAL, Media library, AVFoundation)\
+   networking and internet (webkit, bonjour, BSD sockets)\
+   user applications (Core Location, map kit, store kit, Address book/Contacts)\
+*They also include user-interface elements such as table views, sliders, buttons, text fields, and alert dialogs(UIKit)
+\b \kerning1\expnd0\expndtw0 \ul \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf0 \ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul UIKit\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone \
+-Explain UIKit class hierarchy\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \ul NSObject\ulnone  \
+\ul -UIResponder\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone    -UIApplication\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul    -UIViewController\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone       -UITabViewController\
+      -UITableViewController\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul       -UINavigationController\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone          -UIImagePickerController\
+         -UIVideoEditorController\
+    \ul -UIView\ulnone \
+        -UIWindow, UILabel, UIPickerView, UIProgressView, UIActivityIndicatorView, UIImageView\
+        -UITableViewCell, UIActionSheet, UIAlertView, UIWebView\
+        -UITabBar, UIToolBar, UINavigationBar, UISearchBar\
+        \ul -UIScrollView\
+\ulnone           -UITableView,UICollectionView, UITextView\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul         -UIControl\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone            -UIButton, UIDatePicker, UITextField, UISwitch, UISegmentedControl, UIPageControl\
+-UIColor\
+-UIImage\
+-UIFont\
+\
+-UIAcceleration\
+-UIAccelerometer\
+-UIAccessibilityElement\
+\
+-UITouch\
+-UIEvent\
+\
+-UIDevice\
+-UIScreen\
+\
+-UIMenuController\
+-UISearchDisplayController\
+\
+-UINavigationItem\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul -UIBarItem\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone     -UITabBarItem\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - What is a view?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 *A view is an object whose class is UIView or subclass of UIView.\
+*A view draws itself given a rectangular area of interface.\
+*A view is also a responder which means a view is subjected to user interactions such as swipes and taps.\
+*A view hierarchy is a chief mode of view organisation in iOS. A view can have a subview. When a view is removed suvbviews gets removed, when a view is hidden subviews are hidden, when a view is moved subviews are also moved.\
+* A view can come from nib or can be created by code.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\
+- What is a role of UIWindow in an iOS app?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \ul \
+What is UIWindow?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone *UIWindow is a class whose objects manage and coordinate with the views which the app displays on the display screen.\
+*There should be atleast one window object in an app to show the content.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul What are the 2 principal functions of UIWindow?\ulnone \
+1)To provide area for displaying its views\
+2)To distribute events to the views\
+\ul \
+Where does UIWindow object get instantiated when using storyboard?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone *When using storyboard, the app is given the main storyboard pointed to by the info.plist key \'91Main Storyboard file base name\'92\
+*After UIApplicationMain() instantiates the app delegate class, it asks for its value for 
+\i window 
+\i0 property. If that is nil, a new window is created and assigned to the app delegate\'92s 
+\i window
+\i0  property.\
+*The storyboard\'92s initial view controller is then instantiated and assigned to the window\'92s 
+\i rootViewController
+\i0  property, with the result is view is placed on the window as its root view.\
+*The window is then sent 
+\i makeKeyAndVisible
+\i0  message.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul \
+Can there be multiple UIWindows  in an app?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone Yes. In cases where we want to display a view or a view controller over every other element in the iOS app\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul \
+Why UIWindow instance passed makeKeyAndVisible message?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone Making window Key: means the window will be receiving the keyboard and non-touch-events. But the window may be partially displayed or completely hidden\
+Making window visible: means the window will be brought to front and completely visible.\ul \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \ulnone \
+\
+-What is view controller? Explain view controller life cycle ?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 *A view controller object is an instance of UIViewController or subclass of UIViewController which contains a view.\
+*Role:To mange the view it contains.\
+*The view has no explicit pointer to the view controller, but the view controller is a UIResponder and is in the responder chain just above its view, so it\'92s the views next responder.
+\b \
+\
+
+\b0 View controller life cycle events are as follows:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 \ul loadView\ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 -Creates the view that the controller manages.\
+-It is only called when the view controller is created and only when done programatically.\
+-This method can be overridden to create views manually\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul  viewDidLoad\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone -Called after the view controllers view is loaded into the memory.\
+-It is only called when the view is created.\
+-The view bounds in this step is not the final.\
+-This method can be used to init and setup objects used in view controller.\
+\
+ \ul viewWillAppear\ulnone \
+-Notifies the view controller that its view is about to be added to the view hierarchy.\
+-It is called when the view is presented on the screen.\
+-In this step, the view has bounds defined but the orientation is not applied.\
+-This is called every time the view appears.(do not add code that needs to be executed only once)\
+\
+ \ul viewWillLayoutSubviews\ulnone \
+-Notifies the view controller that its view is about to layout its subviews.\
+-It is called every time the view frame changes (e.g.: while rotating)\
+-Its the first step where views bounds are final.\
+\
+ \ul viewDidLayoutSubviews\ulnone \
+-Notifies the view controller that its view has just laid its superviews.\
+-Additional changes can be done here after the view has laid its subviews.\
+\
+ \ul viewDidAppear\ulnone \
+-Notifies the view controller that its view was added to view hierarchy.\
+-Good place to perform additional tasks associated with presenting the views like animations.\
+-In some cases can be a good place to load data from core data and present it in the view or to start requesting data from a server.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul  viewWillDisappear\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone -Notifies the view controller that its view is about to be removed from the view hierarchy.\
+-It is called when the view is removed on the screen.\
+-This is called every time the view disappears.(do not add code that needs to be executed only once)\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul viewDidDisappear\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone -Notifies the view controller that its view was was removed from view hierarchy.\
+-Good place to de-initialising properties or stoping tasks and removing observers.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\
+- What is navigation controller?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*Navigation view controller is a special kind of view controller, that manages a stack of view controllers and its corresponding views.\
+*It provides a drill-down interface for hierarchical content.\
+*It is always initialised with a  root view controller.(This will be the starting view at the bottom of the stack).\
+*Each view controller manages distinct view hierarchy and the navigation controller coordinates the navigation between these view hierarchies.
+\b \
+\
+\
+- What is the use of addChildViewController? OR What is view containment? OR Distinguish addChildViewController  over addSubView \
+\
+
+\b0 *The basic idea behind this is to embed your child view controller within your parent. The child view controller is said to be contained within the parent.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul Whats the use of it?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone * Adding as child view controller assures that all the containing(child) view controllers get all the events which the parent view controller gets. \
+Eg:If you use addSubView: to add a view without adding the views view controller as child, on rotation the views view controller doesn\'92t get any event on rotation. There is no chance to re-arrange the view\
+\
+*The\expnd0\expndtw0\kerning0
+ child controller can be notified by didMoveToParentViewController: that it has been put into another controller.\
+*transitionFromViewController:toViewController: to exchange one view controller for another can be used to optionally give an animation.\kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\
+- What is a modal view or view presenting?\
+\
+*
+\b0  In iOS 4 and before, there was a notion of a modal view controller, whose view effectively replaced the entire interface. In iOS 5 and later, this has evolved into the notion of a presented view controller.\
+* One view controller presents another view controller; this means that the first view controller, the presenting view controller, remains in place, but the presented view controller\'92s view has replaced the presenting view controller\'92s view.\
+* This relationship between view controllers is different from the parent\'96child relationship. A presenting view controller is not the parent view controller of the view controller it presents \'97 it is its presenting view controller
+\b \
+\
+\
+-Distinguish pushing over presentation\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \ul \
+Pushing
+\b \ulnone :\
+\pard\pardeftab720\partightenfactor0
+
+\b0 \cf0 \expnd0\expndtw0\kerning0
+*When we push a view controller from one view controller, it basically adds a new view controller in the navigation stack. View controller that pushes another view controller has to be embedded in navigation controller in order to maintain a navigation stack of the view controllers.\
+*When we push a view controller, automatically a back button is added in the pushed view controller to get back to the previous view controller and when the back Button is clicked the pushed view controller is popped out from the navigation stack.\
+*This approach can be used to manage our views in hierarchical manner.
+\b \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \ul Presenting:
+\b \ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 *When we present a view controller over the other,  the presented view controller will take full control over the UI by being on top of the presented view controller.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 *
+\b0 \expnd0\expndtw0\kerning0
+In this we don't get back button to go the previous view in this type of transition we have to write our own custom method to dismiss the presented view.\
+*This approach can be performed only when we need to get some information from the user for a limited amount of time and get back to the presenting view controller when the information is fetched from the user.\
+\pard\pardeftab720\partightenfactor0
+\cf0  For e.g when we open a camera (image picker) we add the view controller modally and after clicking the image we get back to the parent view , if the user presses the cancel button it cancel the operation.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \kerning1\expnd0\expndtw0 \
+\
+- What is UIControl ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*UIControl is the base class for control objects such as buttons and sliders that convey user intent to the application. \
+*You cannot use the UIControl class directly to instantiate controls.\
+*The main role of UIControl is to define an interface and base implementation for preparing action messages and initially dispatching them to their targets when certain events occur.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - What is the direct superclass of UIButton ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+   UIButton <-UIcontrol <- UIView <- UIResponder <- NSObject \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\
+- How do you call a UIButtonAction programmatically ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*[<buttonObj> sendActionsForControlEvents: UIControlEventTouchUpInside];\
+*This will programatically fake a touch event toUIButton.\
+*Note that this has to be performed on main thread.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\
+- What is  first responder and a responder chain ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \ul \
+What is a responder?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone *A responder is an object that can respond to events and handle them.\
+*All responder objects are instances of classes that ultimately inherit from UIResponder class\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul What is first responder?\ulnone \
+- In an app, the responder object that first receives any kinds of events is known as the first responder.\
+-The events can be key events, motion events or action messages. (Mouse events and multitouch events first go to the view that is under the finger, that view might or might not be the first responder).\
+-The first responder in a window is a view that the app deems to be best suited for handling an event.\
+-To receive an event, the responder should show willingness to become first responder by using the following method\
+  
+\i -(BOOL) canBecomeFirstResponder \{ return YES; \}
+\i0 \
+\ul \
+What is a responder chain?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone *Responder chain is a runtime collection (hierarchy) of objects that can respond to an event.\
+*If the first responder cannot receive the event, it will forward it to the next responder in the responder chain. The message travels up the chain, towards the higher-level objects, until it is handled. If it isn\'92t handled, the app discards it.
+\b \
+\
+\
+- What is a file owner ?\
+\
+\
+- List the animatable properties of UIView.\
+
+\b0 \
+*frame, bound, centre, alpha, transform, contentStretch, backgroundColor\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+- List the methods that can be implemented while initialising views\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*initWithFrame: is recommended to implement for custom initialization.\
+*initWithCoder:  if you load your view from nib and needs custom initialization.\
+*layerClass: - if you want your view to use a different core animation layer for its backing store\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\
+-What is drawRect?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*implement this method if your view draws custom content (else abroad overriding)\
+*You shouldn\'92t call this method directly (call setNeedsDisplay: instead)\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\
+- What is setNeedsDisplay ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*When the actual content of your view changes, it is your responsibility to notify the system that your view needs to be redrawn. \
+*You do this by calling your view\'92s setNeedsDisplay or setNeedsDisplayInRect: method of the view.\
+*These methods let the system know that it should update the view during the next drawing cycle. \
+*Because it waits until the next drawing cycle to update the view, you can call these methods on multiple views to update them at the same time.
+\b \
+\pard\pardeftab720\sl406\partightenfactor0
+\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 - When can  setNeedsLayout and layoutIfNeeded be called?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \ul \
+*setNeedsLayout:
+\b \ulnone \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 *Call this method on your application\'92s main thread when you want to adjust the layout(position/resize) of a view\'92s subviews.\
+*This method does not force for for an immediate update but waits for the next update cycle.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul *layoutIfNeeded:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone *This method forces for for an immediate update.\
+*This method lays out the view subtree starting at the root.
+\b \
+\pard\pardeftab720\sl406\partightenfactor0
+\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 - When can sizeThatFits & layoutSubviews be called?\
+\
+*
+\b0 \ul sizeThatFits:\
+ \ulnone Implement this method if you want your view to have a different default size than it normally would during resizing operations. (For example, you might use this method to prevent your view from shrinking to the point where subviews cannot be displayed correctly.)\
+\
+*\ul layoutSubViews:\ulnone \
+ *You should override this method only if the autoresizing and constraint-based behaviours of the subviews do not offer the behaviour you want. You can use your implementation to set the frame rectangles of your subviews directly.\
+\
+ *You should not call this method directly. \
+\
+ *If you want to force a layout update, call the setNeedsLayout method instead to do so prior to the next drawing update. If you want to update the layout of your views immediately, call the layoutIfNeeded method.\
+\
+*Following are the situations when layoutSubViews get automaticallyCalled\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul  addSubview\ulnone  causes layoutSubviews to be called on the view being added, the view it\'92s being added to (target view),   and all the        subviews of the target view\
+\ul  setFrame\ulnone  intelligently calls layoutSubviews on the view having it\'92s frame set only if the size parameter of the frame is different\
+\ul  scrolling a UIScrollView\ulnone  causes layoutSubviews to be called on the scrollView, and it\'92s superview\
+\ul  rotating a device\ulnone  only calls layoutSubview on the parent view (the responding viewControllers primary view)\
+\ul  removeFromSuperview\ulnone  \'96 layoutSubviews is called on superview only\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 - What is viewDidLayoutSubviews ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+(Refer view controller life cycle)
+\b \
+\
+\
+- What is initWithCoder & initWithNibName ?\
+- Difference between a view and a layer ?\
+- What is a UIBezierPath ?\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul ScrollView-TableView-CollectionView\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone \
+- What is the difference between content offset and content inset?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \ul Content offset:\
+\pard\pardeftab720\partightenfactor0
+\cf0 \expnd0\expndtw0\kerning0
+\ulnone *The point (CGPoint) of the content that is located at the scroll view\'92s top left (effectively the same thing as the scroll view\'92s bounds origin). \
+*This indicates the  current scroll position, and set it to change the current scroll position. \
+*The values normally go up from 0 until the limit dictated by the contentSize and the scroll view\'92s own bounds is reached.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \ul Content Inset:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone *It is used to add padding around the edges of scrollview content.(buffer the areas around the scroll view)\
+*It is a UIEdgeInsets struct with fields top, left,bottom,right (in the order)\
+*Padding is used most of the times at top and bottom so that the controllers and tool bars don\'92t interfere with the content.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul Content Size:\ulnone \
+*It is the size of the content you need to display in the scrollview.\ul \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \ulnone - Why use table views / collection views instead of scroll views ?\
+\
+- What is prepareForReuse ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*UITableView cells are reusable and the cells to be reused are obtained by calling dequeReusableCellsWithReuseIdentifier:\
+*Due to performance reasons, you should reset attributes of the cell that are not related to content (like alpha, editing-state, color, selection state etc.)\
+*The tableview\'92s delegate -cellForRowAtIndexPath: should reset all the content when reusing a cell.\
+*The ideal method to do the resetting is by overriding prepareForReuse:  which gets called just before the object is returned from dequeReusableCellsWithReuseIdentifier\
+*If the cell object does not have an associated reuse identifier, this method is not called.\
+\
+NOTE:If you override this method, you must be sure to invoke the superclass implementation. \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\
+- What is the use of reuse identifier in table views ?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 \
+*Reuse identifiers are used to identify cells that can be reusable. Reusing cells helps in performance enhancement. If we are reusing cells, instead of instantiating lot of cells, we can instantiate as many cells as required i.e., as many that are visible.\
+*On scrolling to the area where there are cells that haven\'92t got their visual representation yet, instead of instantiating new ones, we can re-use the existing ones.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b \cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul Core location\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone - What is new in Core Location ?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul Persistent Storage\
+Core Data\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone - What is Core Data ? Explain Core data stack ?\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b0 \cf0 *Core Data is a powerful framework on the iOS SDK that allows programmers to store and manage data in an object-oriented way. \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\b0 \cf0 *Core Data Stack\
+\pard\pardeftab720\partightenfactor0
+\cf0 \ul Persistent store(Database file)\
+\pard\pardeftab720\partightenfactor0
+\cf0 \ulnone The object that represents the actual data base on disk. We never use this object directly.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \ul Persistent store coordinator\
+\pard\pardeftab720\partightenfactor0
+\cf0 \ulnone The object that coordinates reading and writing of information from and to the persistent store. The coordinator is the bridge between the managed object context and the persistent store.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \ul Managed object model (MOM)\
+\pard\pardeftab720\partightenfactor0
+\cf0 \ulnone This is a simple file on disk that will represent our data model. Think about it as your database schema.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \ul Managed object\
+\pard\pardeftab720\partightenfactor0
+\cf0 \ulnone This class represents an entity that we want to store in Core Data. \
+Traditional database programmers would know such entities as tables. \
+A managed object is of type NSManagedObject, and its instances are placed on managed object contexts. They adhere to the schema dictated by the managed object model, and they get saved to a persistent store through a persistent store coordinator.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \ul Managed object context (MOC)\
+\pard\pardeftab720\partightenfactor0
+\cf0 \ulnone *We create Core Data objects in memory and set their properties and play with them. All this playing is done on a managed object context. \
+*The context keeps track of all the things that we are doing with our managed objects and even allows us to undo those actions. \
+(Think of your managed objects on a context as toys that you have brought on a table to play with. You can move them around, break them, move them out of the table, and bring new toys in. That table is your managed object context, and you can save its state when you are ready.) \
+*When you save the state of the managed object context, this save operation will be communicated to the persistent store coordinator to which the context is connected, upon which the persistent store coordinator will store the information to the persistent store and subsequently to disk.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \
+\
+*Distinguish the following\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+*property: It is an objective C directive which allows to generates the accessor methods.\
+Here we can specify the name and type of the property.\
+*synthesise:directive which  generates the accessor methods.\
+*interface : the interface of class is usually stored in .h file and defines instance variables and public methods\
+*implementation : The implementation of a class is in .m file and usually contains the actual code of the methods
+\b \
+\
+\
+What is the use of @dynamic directive? Where can it be used?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \ul Why is it used?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone *Tells the compiler that the accessor methods are implemented not by the class itself but somewhere else.\
+*Used to avoid warnings about methods missing at compile time.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul Where is it used?\ulnone \
+*It can be used for subclasses of NSManagedObject (Core data).\
+*When we want to create an outlet for a property by a superclass that was not defined as an outlet.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \ul OS Level\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone - What\'92s new in iOS 8 and iOS 9 ?\
+- Tell me something about stack views introduced in iOS 9 ?\
+- Explain iOS architecture ?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul Xcode Level\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone - What is IBDesignables & IBInspectable ?\
+- Steps in submitting an app to a app store ?\
+- What is an ipa? Can we reverse-engineer Xcode project from an ipa?\
+- What are property lists?\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul Auto layout and size classes\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone - What are size classes ?\
+- What is content hugging and content resistance/compression ?}
