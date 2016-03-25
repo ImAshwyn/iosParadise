@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01EF568E1CA51568000C029D /* DDHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF568C1CA51568000C029D /* DDHomeController.swift */; settings = {ASSET_TAGS = (); }; };
+		01EF568F1CA51568000C029D /* DDSplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF568D1CA51568000C029D /* DDSplashController.swift */; settings = {ASSET_TAGS = (); }; };
+		01EF56921CA516B8000C029D /* DDBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF56911CA516B8000C029D /* DDBaseController.swift */; settings = {ASSET_TAGS = (); }; };
 		CF00EC901C982F1600B9F499 /* DownloadDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00EC8F1C982F1600B9F499 /* DownloadDemoTests.swift */; };
-		CF00ECAA1C98305D00B9F499 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00ECA11C98305D00B9F499 /* ViewController.swift */; };
 		CF00ECAB1C98305D00B9F499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00ECA41C98305D00B9F499 /* AppDelegate.swift */; };
 		CF00ECB51C9831C500B9F499 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF00ECB21C9831C500B9F499 /* LaunchScreen.xib */; };
 		CF00ECB61C9831C500B9F499 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF00ECB41C9831C500B9F499 /* Main.storyboard */; };
@@ -27,11 +29,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01EF568C1CA51568000C029D /* DDHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDHomeController.swift; sourceTree = "<group>"; };
+		01EF568D1CA51568000C029D /* DDSplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSplashController.swift; sourceTree = "<group>"; };
+		01EF56911CA516B8000C029D /* DDBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDBaseController.swift; sourceTree = "<group>"; };
 		CF00EC741C982F1600B9F499 /* DownloadDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DownloadDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF00EC891C982F1600B9F499 /* DownloadDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DownloadDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF00EC8E1C982F1600B9F499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF00EC8F1C982F1600B9F499 /* DownloadDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadDemoTests.swift; sourceTree = "<group>"; };
-		CF00ECA11C98305D00B9F499 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CF00ECA41C98305D00B9F499 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF00ECAC1C9830E900B9F499 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF00ECB21C9831C500B9F499 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -58,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01EF56901CA516B8000C029D /* Generics */ = {
+			isa = PBXGroup;
+			children = (
+				01EF56911CA516B8000C029D /* DDBaseController.swift */,
+			);
+			path = Generics;
+			sourceTree = "<group>";
+		};
 		CF00EC6B1C982F1600B9F499 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +126,7 @@
 		CF00EC9F1C98305D00B9F499 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				01EF56901CA516B8000C029D /* Generics */,
 				CF00ECA01C98305D00B9F499 /* Controllers */,
 				CF00ECA21C98305D00B9F499 /* Models */,
 				CF00ECA31C98305D00B9F499 /* OtherUtilities */,
@@ -125,7 +138,8 @@
 		CF00ECA01C98305D00B9F499 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CF00ECA11C98305D00B9F499 /* ViewController.swift */,
+				01EF568C1CA51568000C029D /* DDHomeController.swift */,
+				01EF568D1CA51568000C029D /* DDSplashController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -304,9 +318,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01EF568F1CA51568000C029D /* DDSplashController.swift in Sources */,
 				CF00ECAB1C98305D00B9F499 /* AppDelegate.swift in Sources */,
 				CF00ECBA1C9832FB00B9F499 /* DownloadManager.swift in Sources */,
-				CF00ECAA1C98305D00B9F499 /* ViewController.swift in Sources */,
+				01EF568E1CA51568000C029D /* DDHomeController.swift in Sources */,
+				01EF56921CA516B8000C029D /* DDBaseController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +501,7 @@
 				CF00EC951C982F1600B9F499 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CF00EC961C982F1600B9F499 /* Build configuration list for PBXNativeTarget "DownloadDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +510,7 @@
 				CF00EC981C982F1600B9F499 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
